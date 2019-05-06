@@ -8,18 +8,14 @@
 	</head>
 	<body>
 		<h1>
-			Using AJAX to Display name, gender, location, email, login username
-			and password,dob, phone, picture, and nationality of a person from a
+			Using AJAX to Display user details
 			JSON API
 		</h1>
 		<button id="button">Load User's details</button>
 		<br /><br />
 		<div id="acmtask"></div>
 		<script>
-			document
-				.getElementById('button')
-
-				.addEventListener('click', loadUsers());
+			document.getElementById('button').addEventListener('click', loadUsers());
 			// Load User details
 			function loadUsers() {
 				var xhr = new XMLHttpRequest();
