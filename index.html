@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>AJAX and JSON task - External API</title>
+	</head>
+	<body>
+		<h1>
+			Using AJAX to Display name, gender, location, email, login username
+			and password,dob, phone, picture, and nationality of a person from a
+			JSON API
+		</h1>
+		<button id="button">Load User's details</button>
+		<br /><br />
+		<div id="acmtask"></div>
+		<script>
+			document
+				.getElementById('button')
+
+				.addEventListener('click', loadUsers());
+			// Load User details
+			function loadUsers() {
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'https://randomuser.me/api', true);
+
+				xhr.onload = function() {
+					if (this.status == 200) {
+						var acmtask = JSON.parse(this.responseText);
+
+						var output ='gender: '+ acmtask.results[0].gender + '<br>' +
+                                     'name: ' + acmtask.results[0].name.first + '<br>' +
+                                     'email: ' + acmtask.results[0].email + '<br>' +
+                                     'location: ' + acmtask.results[0].location.city + '<br>' +
+                                     'uuid: ' + acmtask.results[0].login.uuid + '<br>' +
+                                     'password: ' + acmtask.results[0].login.password + '<br>' +
+                                     'DOB: ' + acmtask.results[0].dob.date + '<br>' +
+                                     'Age: ' + acmtask.results[0].dob.age + '<br>' +
+                                     'Phone: ' + acmtask.results[0].phone + '<br>' +
+                                     'Cell: ' + acmtask.results[0].cell + '<br>' +
+                                     'picture:'+'<br>' + '<img src="' + acmtask.results[0].picture.thumbnail + '" width="70" height="70">' + '<br>' +
+                                     'nationality: ' + acmtask.results[0].nat;
+
+                                    
+
+                        
+						
+						document.getElementById('acmtask').innerHTML = output;
+					}
+                }
+				xhr.send();
+			}
+		</script>
+	</body>
+</html>
